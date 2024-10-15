@@ -8,6 +8,7 @@
  * @author amyae
  */
 
+import javax.swing.JOptionPane;
 import javax.swing.event.*;
 
 public class bioethanolSimProgram extends javax.swing.JFrame {
@@ -18,7 +19,9 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
     public bioethanolSimProgram() {
         initComponents();
         
-        this.setSize(400, 325);
+        this.setSize(400, 462);
+        
+        this.setTitle("Bioethanol Simulation");
         
         phSlider.addChangeListener(new ChangeListener() {
             @Override
@@ -39,7 +42,7 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        iSCTextField = new javax.swing.JTextField();
+        iSConTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tempTextField = new javax.swing.JTextField();
@@ -51,13 +54,28 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
         phSlider = new javax.swing.JSlider();
         phTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         runButton = new javax.swing.JButton();
         resetButton = new javax.swing.JButton();
-        bioEthConTextField = new javax.swing.JTextField();
+        ethConTextField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        iBConTextField = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        rOEthConTextField = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        bioGroTextField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        yieCoeTextField = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        costTextField = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -66,13 +84,13 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
         jLabel1.setText("Initial substrate concentration:");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 40, 190, 20);
-        getContentPane().add(iSCTextField);
-        iSCTextField.setBounds(200, 40, 64, 22);
+        getContentPane().add(iSConTextField);
+        iSConTextField.setBounds(210, 40, 64, 22);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("gram");
+        jLabel2.setText("g");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(270, 40, 40, 20);
+        jLabel2.setBounds(280, 40, 10, 20);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Temperature:");
@@ -94,40 +112,38 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
         waterAmoTextField.setBounds(110, 100, 71, 22);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("liter");
+        jLabel6.setText("L");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(190, 100, 37, 20);
+        jLabel6.setBounds(190, 100, 10, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("pH:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(10, 130, 37, 16);
+        jLabel7.setBounds(10, 160, 37, 16);
 
         phSlider.setMaximum(14);
         phSlider.setValue(7);
         getContentPane().add(phSlider);
-        phSlider.setBounds(40, 130, 200, 20);
+        phSlider.setBounds(40, 160, 200, 20);
 
         phTextField.setText("7");
         getContentPane().add(phTextField);
-        phTextField.setBounds(240, 130, 30, 22);
+        phTextField.setBounds(250, 160, 30, 22);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel8.setText("Parameters");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(140, 0, 120, 32);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(0, 200, 400, 10);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel9.setText("Results");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(160, 220, 80, 32);
+        jLabel9.setBounds(160, 240, 80, 32);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Bioethanol concentration:");
+        jLabel10.setText("Ethanol concentration:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(10, 260, 160, 20);
+        jLabel10.setBounds(10, 280, 140, 20);
 
         runButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         runButton.setText("Run the simulation");
@@ -137,7 +153,7 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
             }
         });
         getContentPane().add(runButton);
-        runButton.setBounds(10, 160, 150, 30);
+        runButton.setBounds(20, 190, 150, 30);
 
         resetButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         resetButton.setText("Reset");
@@ -147,21 +163,83 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
             }
         });
         getContentPane().add(resetButton);
-        resetButton.setBounds(170, 160, 75, 30);
-        getContentPane().add(bioEthConTextField);
-        bioEthConTextField.setBounds(180, 260, 71, 22);
+        resetButton.setBounds(180, 190, 75, 30);
+        getContentPane().add(ethConTextField);
+        ethConTextField.setBounds(160, 280, 71, 22);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("gram/liter");
+        jLabel11.setText("g/L");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(260, 260, 70, 20);
+        jLabel11.setBounds(240, 280, 20, 20);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel12.setText("Initial biomass concentration:");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(10, 130, 190, 20);
+        getContentPane().add(iBConTextField);
+        iBConTextField.setBounds(200, 130, 71, 22);
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel13.setText("g/L");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(280, 130, 30, 20);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(0, 230, 400, 10);
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setText("Rate of ethanol concentration:");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(10, 310, 190, 20);
+        getContentPane().add(rOEthConTextField);
+        rOEthConTextField.setBounds(210, 310, 71, 22);
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel15.setText("g/L/h");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(290, 310, 40, 20);
+
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel16.setText("Biomass growth:");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(10, 340, 110, 20);
+        getContentPane().add(bioGroTextField);
+        bioGroTextField.setBounds(120, 340, 64, 22);
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel17.setText("g/g");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(190, 340, 30, 20);
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel18.setText("Yield coefficient:");
+        getContentPane().add(jLabel18);
+        jLabel18.setBounds(10, 370, 110, 20);
+        getContentPane().add(yieCoeTextField);
+        yieCoeTextField.setBounds(120, 370, 64, 22);
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel19.setText("g/g");
+        getContentPane().add(jLabel19);
+        jLabel19.setBounds(190, 370, 30, 20);
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel20.setText("Cost:");
+        getContentPane().add(jLabel20);
+        jLabel20.setBounds(10, 400, 40, 20);
+        getContentPane().add(costTextField);
+        costTextField.setBounds(50, 400, 64, 22);
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel22.setText("€");
+        getContentPane().add(jLabel22);
+        jLabel22.setBounds(120, 400, 10, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
-        iSCTextField.setText(null);
+        iSConTextField.setText(null);
         tempTextField.setText(null);
         waterAmoTextField.setText(null);
         phTextField.setText("7");
@@ -170,11 +248,11 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
 
     private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runButtonActionPerformed
         // TODO add your handling code here:
-        double iSC= Double.parseDouble(iSCTextField.getText());
+        double iSC= Double.parseDouble(iSConTextField.getText());
         double waterAmo= Double.parseDouble(waterAmoTextField.getText());
         
         double bioEthCon=((46*iSC)/(90*waterAmo));
-        bioEthConTextField.setText(String.valueOf(bioEthCon));
+        ethConTextField.setText(String.valueOf(bioEthCon));
     }//GEN-LAST:event_runButtonActionPerformed
 
     /**
@@ -213,12 +291,25 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bioEthConTextField;
-    private javax.swing.JTextField iSCTextField;
+    private javax.swing.JTextField bioGroTextField;
+    private javax.swing.JTextField costTextField;
+    private javax.swing.JTextField ethConTextField;
+    private javax.swing.JTextField iBConTextField;
+    private javax.swing.JTextField iSConTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -229,9 +320,11 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSlider phSlider;
     private javax.swing.JTextField phTextField;
+    private javax.swing.JTextField rOEthConTextField;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton runButton;
     private javax.swing.JTextField tempTextField;
     private javax.swing.JTextField waterAmoTextField;
+    private javax.swing.JTextField yieCoeTextField;
     // End of variables declaration//GEN-END:variables
 }
