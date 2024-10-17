@@ -242,8 +242,15 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
         iSConTextField.setText(null);
         tempTextField.setText(null);
         waterAmoTextField.setText(null);
+        iBConTextField.setText(null);
         phTextField.setText("7");
         phSlider.setValue(7);
+        
+        ethConTextField.setText(null);
+        rOEthConTextField.setText(null);
+        bioGroTextField.setText(null);
+        yieCoeTextField.setText(null);
+        costTextField.setText(null);
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runButtonActionPerformed
@@ -278,11 +285,11 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
         bioGroTextField.setText(String.valueOf(df.format(fBC)));
 
         //Product formation kinetics
-        double rPP = 5.5*sGR*(fBC+0.5)*fBC;
+        double rPP = 5.5*sGR*fBC+0.5*fBC;
         rOEthConTextField.setText(String.valueOf(df.format(rPP)));
 
         //Cost analysis
-        double cost = waterAmo*(0.33+iSC)*(0.0012+iniBioCon)*0.20;
+        double cost = waterAmo*0.33+iSC*0.0012+iniBioCon*0.20;
         costTextField.setText(String.valueOf(df.format(cost)));
     }//GEN-LAST:event_runButtonActionPerformed
 
