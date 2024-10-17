@@ -8,8 +8,8 @@
  * @author amyae
  */
 
-import javax.swing.JOptionPane;
 import javax.swing.event.*;
+import java.text.DecimalFormat;
 
 public class bioethanolSimProgram extends javax.swing.JFrame {
 
@@ -248,11 +248,42 @@ public class bioethanolSimProgram extends javax.swing.JFrame {
 
     private void runButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runButtonActionPerformed
         // TODO add your handling code here:
+        // Create decimalformat instance
+        DecimalFormat df = new DecimalFormat("#.###");
+
+        // Ethanol concentration calculation
         double iSC= Double.parseDouble(iSConTextField.getText());
         double waterAmo= Double.parseDouble(waterAmoTextField.getText());
         
-        double bioEthCon=((46*iSC)/(90*waterAmo));
-        ethConTextField.setText(String.valueOf(bioEthCon));
+        double  bioEthCon= (46*iSC)/(90*waterAmo);
+        ethConTextField.setText(String.valueOf(df.format(bioEthCon)));
+
+        // Yield coeff calculation
+        double iniBioCon = Double.parseDouble(iBConTextField.getText());
+
+        double yieldCoeffResult = iniBioCon/iSC;
+        yieCoeTextField.setText(String.valueOf(df.format(yieldCoeffResult)));
+
+        // Maximum carrying capacity(Xm)
+        double Xm = yieldCoeffResult*iSC*waterAmo;
+
+        //Specific growth rate
+        double temp = Double.parseDouble(tempTextField.getText());
+        double ph = Double.parseDouble(phTextField.getText());
+
+        double sGR = 0.0013*(iSC/(0.35+iSC))*Math.pow((temp-7.5),2)*Math.exp(-0.55*Math.pow((ph-5.5),2));
+
+        //Final biomass concentration
+        double fBC = (1-(sGR/0.45))*Xm;
+        bioGroTextField.setText(String.valueOf(df.format(fBC)));
+
+        //Product formation kinetics
+        double rPP = 5.5*sGR*(fBC+0.5)*fBC;
+        rOEthConTextField.setText(String.valueOf(df.format(rPP)));
+
+        //Cost analysis
+        double cost = waterAmo*(0.33+iSC)*(0.0012+iniBioCon)*0.20;
+        costTextField.setText(String.valueOf(df.format(cost)));
     }//GEN-LAST:event_runButtonActionPerformed
 
     /**
