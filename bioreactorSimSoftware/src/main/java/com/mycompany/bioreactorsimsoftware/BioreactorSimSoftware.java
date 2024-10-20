@@ -11,6 +11,7 @@ package com.mycompany.bioreactorsimsoftware;
 public class BioreactorSimSoftware {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        bioethanolSimProgram mp = new bioethanolSimProgram();
+        mp.setVisible(true);
     }
 }
